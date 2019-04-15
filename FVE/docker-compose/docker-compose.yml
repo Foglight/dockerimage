@@ -1,0 +1,22 @@
+version: '3'
+services:
+  postgresql:
+    image: postgres:11.2
+    networks:
+      - fve-net
+    environment:
+      POSTGRES_PASSWORD: foglight
+#    volumes:
+#      - /var/lib/postgresql:/var/lib/postgresql/data
+  fve:
+    image: questfve/fve:latest
+    networks:
+      - fve-net
+    ports:
+      - "8080:8080"
+  fglam:
+    image: questfve/fglam:latest
+    networks:
+      - fve-net
+networks:
+  fve-net:
