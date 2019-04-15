@@ -13,20 +13,20 @@ This is the deployment guide for Foglight for Virtualization(FVE) in docker cont
 ### Save your data to volume (optional)
 * uncomment the following lines in docker-compose.yml before deploy   
 ```
-\#    volumes:   
-\#      - /var/lib/postgresql:/var/lib/postgresql/data   
+#    volumes:   
+#      - /var/lib/postgresql:/var/lib/postgresql/data   
 ```
 ---
 ## Deploy with docker command line
 ---
 ### Deploy
-* Create network
+* Create network   
 ``docker network create --driver bridge fve-net``
-* Deploy postgresql container
+* Deploy postgresql container   
 ``docker run --name postgresql --network fve-net -e POSTGRES_PASSWORD=foglight -d postgres:11.2``
-* Deploy fve container
+* Deploy fve container   
 ``docker run --name fve --network fve-net -d -p 8080:8080 questfve/fve:latest``
-* Deploy fglam container
+* Deploy fglam container   
 ``docker run --name fglam --network fve-net -d questfve/fglam:latest``
 ### Save your data to volume (optional)
 * add parameter ``-v /var/lib/postgresql:/var/lib/postgresql/data`` when deploy postgresql container
