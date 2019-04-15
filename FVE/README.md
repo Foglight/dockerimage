@@ -1,8 +1,8 @@
 # FVE docker image deployment guide
 ## Overview   
-This is the deployment guide for Foglight for Virtualization(FVE) in docker containers. 
+This is the deployment guide for Foglight for Virtualization(FVE) in docker containers. You can either deploy with docker-compose or docker command line. Deploy with docker-compose is recommended by FVE team.
 
-## Deploy with docker-compose   
+## Deploy with docker-compose (recommended)   
 
 ### Pre-Requisites   
 * Install docker-compose [https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/)
