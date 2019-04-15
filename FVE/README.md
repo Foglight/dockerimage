@@ -1,25 +1,35 @@
 # FVE docker image deployment guide
----
-## Overview
+## Overview   
 This is the deployment guide for Foglight for Virtualization(FVE) in docker containers. 
----
-## Deploy with docker-compose
----
-### Pre-Requisites
+
+## Deploy with docker-compose   
+
+### Pre-Requisites   
 * Install docker-compose [https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/)
-* Download [docker-compose.yml](https://github.com/Foglight/dockerimage/tree/master/FVE/docker-compose/docker-compose.yml)
+* Download [docker-compose.yml](https://github.com/Foglight/dockerimage/tree/master/FVE/docker-compose/docker-compose.yml) 
+  
 ### Deploy
 * ``docker-compose up``
+
 ### Save your data to volume (optional)
 * uncomment the following lines in docker-compose.yml before deploy   
 ```
 #    volumes:   
 #      - /var/lib/postgresql:/var/lib/postgresql/data   
 ```
----
-## Deploy with docker command line
----
-### Deploy
+
+### Deploy additional fglam containers (optional)  
+Add following lines to docker-compose.yml and deploy, note that $N represents number as postfix to your additional fglam, you can change it to any number or using your own naming conversions
+```
+  fglam_$N:
+    image: questfve/fglam:latest
+    networks:
+      - fve-net
+``` 
+
+## Deploy with docker command line   
+
+### Deploy   
 * Create network   
 ``docker network create --driver bridge fve-net``
 * Deploy postgresql container   
@@ -28,8 +38,15 @@ This is the deployment guide for Foglight for Virtualization(FVE) in docker cont
 ``docker run --name fve --network fve-net -d -p 8080:8080 questfve/fve:latest``
 * Deploy fglam container   
 ``docker run --name fglam --network fve-net -d questfve/fglam:latest``
-### Save your data to volume (optional)
+
+### Save your data to volume (optional)   
 * add parameter ``-v /var/lib/postgresql:/var/lib/postgresql/data`` when deploy postgresql container
----
+
+### Deploy additional fglam containers (optional)  
+Run following commands, note that $N represents number as postfix to your additional fglam, you can change it to any number or using your own naming conversions
+```
+docker run --name fglam_$N --network fve-net -d questfve/fglam:latest
+``` 
+
 ## Access FVE
 Access with http://$DOCKER_HOST:8080, where $DOCKER_HOST is the hostname or IP of your docker host.
