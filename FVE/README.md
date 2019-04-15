@@ -11,9 +11,11 @@ This is the deployment guide for Foglight for Virtualization(FVE) in docker cont
 ### Deploy
 * ``docker-compose up``
 ### Save your data to volume (optional)
-* uncomment the following lines in docker-compose.yml before deploy  
-``\#    volumes:  
-\#      - /var/lib/postgresql:/var/lib/postgresql/data``
+* uncomment the following lines in docker-compose.yml before deploy   
+```
+\#    volumes:   
+\#      - /var/lib/postgresql:/var/lib/postgresql/data   
+```
 ---
 ## Deploy with docker command line
 ---
