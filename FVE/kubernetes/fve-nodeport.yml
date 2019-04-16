@@ -1,0 +1,119 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: questfve
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    quest.product: fve
+    quest.service: postgresql
+  name: postgresql
+  namespace: questfve
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        quest.product: fve
+        quest.service: postgresql
+    spec:
+      containers:
+      - env:
+        - name: POSTGRES_PASSWORD
+          value: foglight
+        image: postgres:11.2
+        name: postgresql
+        ports:
+        - containerPort: 5432
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    quest.product: fve
+    quest.service: postgresql
+  name: postgresql
+  namespace: questfve
+spec:
+  ports:
+  - port: 5432
+  selector:
+    quest.product: fve
+    quest.service: postgresql
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    quest.product: fve
+    quest.service: fve
+  name: fve
+  namespace: questfve
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        quest.product: fve
+        quest.service: fve
+    spec:
+      containers:
+      - image: questfve/fve:8.8.5
+        name: fve
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            memory: "4Gi"
+            cpu: "2"
+          limits:
+            memory: "16Gi"
+            cpu: "8"
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    quest.product: fve
+    quest.service: fve
+  name: fve
+  namespace: questfve
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+  selector:
+    quest.product: fve
+    quest.service: fve
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    quest.product: fve
+    quest.service: fglam
+  name: fglam
+  namespace: questfve
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        quest.product: fve
+        quest.service: fglam
+    spec:
+      containers:
+      - image: questfve/fglam:5.9.4
+        name: fglam
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "100m"
+          limits:
+            memory: "2Gi"
+            cpu: "2"
+      restartPolicy: Always
