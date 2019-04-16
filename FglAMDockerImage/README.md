@@ -41,13 +41,13 @@ docker-entrypoint.sh: \
 This script will execute when running the fglamimg to the container, when setting the -e FMS_URL, HOST_DISPLAY_NAME, AUTH_TOKEN parameters to the installer.properties file, it will start to install the FglAM instance and start it up automatically. Then print the latest log on the container console. 
 
 installer.properties: \
-installer.installdir=/opt/fglam  #Set the directory that FoglightAgentManager will be installed to. \
-installer.fms=url=https://${FMS_URL}:8443,ssl-allow-self-signed=true,ssl-cert-common-name=quest.com #Specify a URL that FoglightAgentManager will connect to. Here is using the HTTPS conncention. \
-installer.noservice  #On Windows, do not install FoglightAgentManager as a service. On UNIX, do not install an init.d script to automatically start FoglightAgentManager. \
-installer.silent  #Install FoglightAgentManager without prompting for configuration options. Default values will be used unless they are
+- installer.installdir=/opt/fglam  #Set the directory that FoglightAgentManager will be installed to. \
+- installer.fms=url=https://${FMS_URL}:8443,ssl-allow-self-signed=true,ssl-cert-common-name=quest.com #Specify a URL that FoglightAgentManager will connect to. Here is using the HTTPS conncention. \
+- installer.noservice  #On Windows, do not install FoglightAgentManager as a service. On UNIX, do not install an init.d script to automatically start FoglightAgentManager. \
+- installer.silent  #Install FoglightAgentManager without prompting for configuration options. Default values will be used unless they are
 overridden on the command line. \
-installer.host-display-name=${HOST_DISPLAY_NAME}  #Manually set the display name used to identify this FglAM instance. \
-installer.auth-token=${AUTH_TOKEN}  #Register auth-token during install. This token is generated from the FMS Server and provides authorization for this client to connect. You can generate the token from MBean console: ${FMS_URL}:8080/jmx-console/ -> FglAM -> name=TokenManager -> generateAuthToken(), Invoke it with no parameter setting. 
+- installer.host-display-name=${HOST_DISPLAY_NAME}  #Manually set the display name used to identify this FglAM instance. \
+- installer.auth-token=${AUTH_TOKEN}  #Register auth-token during install. This token is generated from the FMS Server and provides authorization for this client to connect. You can generate the token from MBean console: ${FMS_URL}:8080/jmx-console/ -> FglAM -> name=TokenManager -> generateAuthToken(), Invoke it with no parameter setting. 
 
 FglAM-{version}-linux-x86_64.bin \
 This file must download from the FMS server which have installed the FglAM-linux-x86_64-{version}.car or FglAM-all-{version}.car. You can download it from 'Dashboards' -> 'Administration' -> 'Cartridges' -> 'Compoents for Download' page.
