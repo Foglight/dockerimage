@@ -1,14 +1,14 @@
 # Deploy onto Kubernetes
 
 ## Deploy
-* prerequisite
+### Prerequisite
   * kubernetes command line tool
 [kubectl official installation guide](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
   * kubernetes configuration file (Kube Config)
 It is a standard kubernetes file used for the kubectl client to access to the cluster. It could be retrieved from the master node on private cloud. And if on public cloud, different cloud have their guide to retrieve this file from the cluster.
-* resource management for fve and fglam
+### Resource management
 This will help you if your environment don't have minimal required resources for running fve. It will failed to schedule instead of running container failed and need to debug the container for trouble shooting.
-  * For FVE, you will see content in the yaml files similar as below. By default, the FVE requires at least 4Gi memory and 2 Cores CPU. If your environment is large, you can change this based on the sizing guide. 
+* For FVE, you will see content in the yaml files similar as below. By default, the FVE requires at least 4Gi memory and 2 Cores CPU. If your environment is large, you can change this based on the sizing guide. 
 ```        
 resources:
     requests:
@@ -18,7 +18,8 @@ resources:
         memory: "16Gi"
         cpu: "8"
 ```
-  * For Fglam, you will see content in the yaml files similar as below. By default, the Fglam requires at least 512Mi memory and 0.1 Core CPU (100 millicores). If your environment is large, you can change this based on the sizing guide. 
+
+* For Fglam, you will see content in the yaml files similar as below. By default, the Fglam requires at least 512Mi memory and 0.1 Core CPU (100 millicores). If your environment is large, you can change this based on the sizing guide. 
 ```
 resources:
     requests:
@@ -33,12 +34,12 @@ resources:
   * node port: Public cloud which have a public node. Private cloud without ingress controller. You will check which node the fve container is running on and access to fve with http://$NODE_IP_ADDRESS:$EXPOSED_NODE_PORT
 ### Deploy as Load Balancer
 * fve kubernetes deployment yaml file
-``kubectl apply -f ./kubernetes/fve-loadbalancer.yml``
+``kubectl apply -f fve-loadbalancer.yml``
 * Change ``loadBalancerIP: <Public IP>``
   * For AKS: follow the [official guide](https://docs.microsoft.com/en-us/azure/aks/static-ip).
 ### Deploy as Node Port
 * fve kubernetes deployment yaml file
-``kubectl apply -f ./kubernetes/fve-nodeport.yml``
+``kubectl apply -f fve-nodeport.yml``
 
 ## Access FVE
 Access method will be different based on the different service deploy methods.
