@@ -31,9 +31,9 @@ fglamimg:latest
 
 
 # Instructions
-- Dockerfile: 
--* update the apt lib. 
--* define the WORKDIR. 
+* Dockerfile: 
+** update the apt lib. 
+** define the WORKDIR. 
 -- copy the FglAM installer to the WORKDIR and install it using HTTPS connection to FMS_URL. 
 -- execute the docker-entrypoint scrip to install FglAM and start it up, then print the latest log. 
 
