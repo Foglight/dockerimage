@@ -6,7 +6,7 @@ This is the deployment guide for Foglight Agent Manager in docker containers.
 
 ### Deploy   
 ```
-docker run --name fglam --network fve-net -e FMS_URL=http://$FMS_URL -e FGLAM_AUTH_TOKEN=$FGLAM_AUTH_TOKEN -d questfve/fglam:latest
+docker run --name fglam -e FMS_URL=http://$FMS_URL -e FGLAM_AUTH_TOKEN=$FGLAM_AUTH_TOKEN -d questfve/fglam:latest
 ```   
 
 ### Notes
