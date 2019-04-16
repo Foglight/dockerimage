@@ -1,8 +1,6 @@
 # Deploy onto Kubernetes
 
 ## Deploy
-* fve kubernetes deployment yaml file folder
-``./kubernetes``
 * prerequisite
   * kubernetes command line tool
 [kubectl official installation guide](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
@@ -35,12 +33,12 @@ resources:
   * node port: Public cloud which have a public node. Private cloud without ingress controller. You will check which node the fve container is running on and access to fve with http://$NODE_IP_ADDRESS:$EXPOSED_NODE_PORT
 ### Deploy as Load Balancer
 * fve kubernetes deployment yaml file
-``./kubernetes/fve-loadbalancer.yml``
+``kubectl apply -f ./kubernetes/fve-loadbalancer.yml``
 * Change ``loadBalancerIP: <Public IP>``
   * For AKS: follow the [official guide](https://docs.microsoft.com/en-us/azure/aks/static-ip).
 ### Deploy as Node Port
 * fve kubernetes deployment yaml file
-``./kubernetes/fve-nodeport.yml``
+``kubectl apply -f ./kubernetes/fve-nodeport.yml``
 
 ## Access FVE
 Access method will be different based on the different service deploy methods.
