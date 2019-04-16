@@ -55,4 +55,4 @@ docker run --name fglam_$N --network fve-net -d questfve/fglam:latest
 Access with http://$DOCKER_HOST:8080, where $DOCKER_HOST is the hostname or IP of your docker host.
 
 ## Deploy onto Kubernetes
-[deployment guide](https://github.com/Foglight/dockerimage/tree/master/FVE)
+[deployment guide](https://github.com/Foglight/dockerimage/tree/master/FVE/kubernetes)
