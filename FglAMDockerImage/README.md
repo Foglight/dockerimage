@@ -41,25 +41,24 @@ This section is mainly about the detail instructions of the role and usage of th
 Below is the main workflow/steps about how the FglAM docker file work: 
 - Pull the ubuntu image
 - Update the apt lib. 
-- Define the WORKDIR. 
-- Copy the FglAM installer and properties file to the WORKDIR and install it using HTTPS connection to FMS. 
+- Define the WORKDIR and copy all necessary files to this folder 
 - Execute the docker-entrypoint script to install FglAM and start it up. 
 
 
 ## docker-entrypoint.sh:
-This script will execute while running the fglam image to the container. If setting the -e FMS_URL, HOST_DISPLAY_NAME, AUTH_TOKEN parameters to the installer.properties file, it will start to install the FglAM instance and start it up automatically.  
+This script is used to install or run the FglAM instance in the container. 
 
 
 ## installer.properties:
 This file is used to set different properties during the FglAM installation, and here are the properties instructions.
 * installer.installdir=/opt/fglam \
-Set the directory to which FoglightAgentManager will be installed. If you modify the directory, please pay attention to the corresponding changes in docker-entrypoint.sh(at line 3 and 5) and replace the "/opt/fglam" string with the specific FglAM installer directory you just edit before.
+Set the directory where the FglAM will be installed. If you modify the path, you should edit the docker-entrypoint.sh(at line 3 and 5) by replacing the "/opt/fglam" string with the specific FglAM installation directory you specify here.
 
 * installer.fms=url=https://${FMS_URL}:8443,ssl-allow-self-signed=true,ssl-cert-common-name=quest.com \
-Specify the FMS URL that FoglightAgentManager will connect to. Here is using the HTTPS conncention. 
+Specify the FMS URL that FglAM will connect to. Here is using the HTTPS conncention. 
 
 * installer.noservice \
-On Windows, do not install FoglightAgentManager as a service. On UNIX, do not install an init.d script to automatically start FoglightAgentManager. 
+Do not install an init.d script to automatically start FoglightAgentManager. 
 
 * installer.silent \
 Install FoglightAgentManager without prompting for configuration options. Default values will be used unless they are overridden on the command line. 
