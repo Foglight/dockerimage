@@ -33,7 +33,7 @@ docker run -dit --name ${CONTAINER_NAME} -e FMS_URL=${FMS_URL} -e HOST_DISPLAY_N
 ```
 docker run -dit --name dockerfglam -e FMS_URL=10.154.14.14 -e HOST_DISPLAY_NAME=DockerFglAMTest -e AUTH_TOKEN=encrypted:be054a065b65b7947054a21453fa64d570df441e46c49ab073039a48c893a392da5b289af8925d864d4e9831ba21fc3ad0383cae86be2b5fc3783a329bfdd1dc1a04c86c557b21596def6ceeffd97bfdb58afbed5dbf31bba6c3d62c31758ebcf0d8941b6a317b41b93f72c4d18c2919 fglamimg:latest
 ```
-
+Note: For how to retrieve the AUTH_TOKEN, please check the installer.properties instruction in the "Additional Information" section for details.
 
 # Additional Information
 This section is mainly about the detail instructions of the role and usage of the files that we use to build the FglAM image.
