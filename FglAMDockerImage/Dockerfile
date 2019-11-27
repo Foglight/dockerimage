@@ -1,5 +1,5 @@
 FROM ubuntu
-MAINTAINER zake.guo@quest.com
+MAINTAINER fglam@quest.com
 RUN apt-get update \
 && apt-get -y install \
 && apt-get clean \
