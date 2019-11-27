@@ -2,7 +2,7 @@
 This md document explains about how to build and run the FglAM Docker Image.
 ## Image building guide
 Here are the steps about how to build your own FglAM Docker Image:
-* Download the files (FglAM-{version}-linux-x86_64.bin, [installer.properties](https://github.com/Foglight/dockerimage/blob/master/FglAMDockerImage/installer.properties), [Dockerfile](https://github.com/Foglight/dockerimage/blob/master/FglAMDockerImage/Dockerfile), [docker-entrypoint.sh](https://github.com/Foglight/dockerimage/blob/master/FglAMDockerImage/docker-entrypoint.sh)), you can see the introduction of the files at the end of the document.
+* Download the files (FglAM-{version}-linux-x86_64.bin, [installer.properties](https://github.com/Foglight/dockerimage/blob/master/FglAMDockerImage/installer.properties), [Dockerfile](https://github.com/Foglight/dockerimage/blob/master/FglAMDockerImage/Dockerfile), [docker-entrypoint.sh](https://github.com/Foglight/dockerimage/blob/master/FglAMDockerImage/docker-entrypoint.sh)), you can see the Files instructions at the end of the document.
 * Put them to the same folder
 * Then cd to this folder and execute the build command as below
 
