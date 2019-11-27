@@ -2,7 +2,7 @@
 # Determine whether the log file exists.if exist, start fglam directly, if not, install fglam.
 PREFIX=/opt/fglam/state/default/logs
 if [ -d $PREFIX ]; then
-  /opt/fglam/bin/fglam -s --auth-token ${AUTH_TOKEN}
+  /opt/fglam/bin/fglam -s
 else
   FMS_URL="${FMS_URL:-default_fms_url}"
   HOST_DISPLAY_NAME="${HOST_DISPLAY_NAME:-default_host_display_name}"
