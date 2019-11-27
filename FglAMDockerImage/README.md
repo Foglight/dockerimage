@@ -53,7 +53,7 @@ This script will execute while running the fglam image to the container. If sett
 ## installer.properties:
 This file is used to set different properties during the FglAM installation, and here are the properties instructions.
 * installer.installdir=/opt/fglam \
-Set the directory to which FoglightAgentManager will be installed. 
+Set the directory to which FoglightAgentManager will be installed. If you modify the directory, please pay attention to the corresponding changes in docker-entrypoint.sh(at line 3 and 5) and replace the "/opt/fglam" string with the specific FglAM installer directory you just edit before.
 
 * installer.fms=url=https://${FMS_URL}:8443,ssl-allow-self-signed=true,ssl-cert-common-name=quest.com \
 Specify the FMS URL that FoglightAgentManager will connect to. Here is using the HTTPS conncention. 
