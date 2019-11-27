@@ -1,10 +1,10 @@
 # FglAM Docker Image
 ## Image building guide
 The following files are needed:
-* Ubuntu image. 
-* FglAM installer file(FglAM-{version}-linux-x86_64.bin).
+* Ubuntu image
+* FglAM installer file(FglAM-{version}-linux-x86_64.bin)
+* [installer.properties](https://github.com/Foglight/dockerimage/blob/master/FglAMDockerImage/installer.properties)
 * [Dockerfile](https://github.com/Foglight/dockerimage/blob/master/FglAMDockerImage/Dockerfile)
-* [FglAM_installer_file](https://github.com/Foglight/dockerimage/blob/master/FglAMDockerImage/installer.properties)
 * [docker-entrypoint.sh](https://github.com/Foglight/dockerimage/blob/master/FglAMDockerImage/docker-entrypoint.sh)
 
 ### Build
